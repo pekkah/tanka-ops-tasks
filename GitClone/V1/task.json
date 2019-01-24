@@ -1,0 +1,87 @@
+{
+    "id": "046566b5-b89e-42d0-a6cf-994577dda118",
+    "name": "GitClone",
+    "friendlyName": "Git Clone",
+    "description": "Clone repository",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Pekka Heikura",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "instanceNameFormat": "git clone $(repositoryName) $(target)",
+    "inputs": [
+        {
+            "name": "gitHubConnection",
+            "type": "connectedService:github:OAuth,PersonalAccessToken",
+            "label": "GitHub Connection",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Specify the service connection name for your GitHub connection. Learn more about service connections [here](https://aka.ms/AA3am5s)."
+        },
+        {
+            "name": "repositoryName",
+            "type": "pickList",
+            "label": "Repository",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Specify the name of the GitHub repository in which GitHub releases will be created.",
+            "properties": {
+                "DisableManageLink": "True",
+                "EditableOptions": "True"
+            }
+        },
+        {
+            "name": "target",
+            "type": "filePath",
+            "label": "Target Folder",
+            "defaultValue": "repo",
+            "required": true,
+            "helpMarkDown": "Target folder"
+        },
+        {
+            "name": "branch",
+            "type": "string",
+            "label": "Branch",
+            "defaultValue": "gh-pages",
+            "required": true,
+            "helpMarkDown": "Branch name"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "label": "Name",
+            "defaultValue": "Build",
+            "required": true,
+            "helpMarkDown": "user.name"
+        },
+        {
+            "name": "email",
+            "type": "string",
+            "label": "Email",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "user.email"
+        }
+    ],
+    "sourceDefinitions": [
+        {
+            "target": "repositoryName",
+            "endpoint": "/$(system.teamProject)/_apis/sourceProviders/GitHub/repositories?serviceEndpointId=$(gitHubConnection)",
+            "selector": "jsonpath:$.repositories[*].id",
+            "keySelector": "jsonpath:$.repositories[*].id",
+            "authKey": "tfs:teamfoundation"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "index.js"
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "manifestVersion": 1,
+    "id": "tanka-ops-git",
+    "name": "Git Tasks",
+    "version": "0.0.8",
+    "publisher": "tanka",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "files": [
+        {
+            "path": "GitAddAll"
+        },
+        {
+            "path": "GitClone"
+        },
+        {
+            "path": "GitCommit"
+        },
+        {
+            "path": "GitPush"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "GitAddAll",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GitAddAll"
+            }
+        },
+        {
+            "id": "GitClone",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GitClone"
+            }
+        },
+        {
+            "id": "GitCommit",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GitCommit"
+            }
+        },
+        {
+            "id": "GitPush",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GitPush"
+            }
+        }
+    ]
+}

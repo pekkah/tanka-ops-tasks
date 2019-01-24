@@ -1,0 +1,34 @@
+{
+    "id": "46907afd-913a-4fa2-bb3b-e6f6fa4d99d0",
+    "name": "GitAddAll",
+    "friendlyName": "Git add --all",
+    "description": "",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Pekka Heikura",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "instanceNameFormat": "git add --all",
+    "inputs": [
+        {
+            "name": "repositoryFolder",
+            "type": "filePath",
+            "label": "Repository folder",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Folder where the cloned repository exists"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "index.js"
+        }
+    }
+}
